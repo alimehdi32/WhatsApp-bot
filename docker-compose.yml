@@ -1,0 +1,27 @@
+services:
+  whatsapp-api:
+    build: ./whatsapp-api
+    container_name: whatsapp_api
+    ports:
+      - "3000:3000"
+    volumes:
+      - whatsapp_data:/app/.wwebjs_auth
+    restart: unless-stopped
+
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=true
+      - N8N_BASIC_AUTH_USER=YOUR_n8n_EMAIL
+      - N8N_BASIC_AUTH_PASSWORD=YOUR_n8n_PASSWORD
+      - GENERIC_TIMEZONE=Asia/Kolkata
+    volumes:
+      - n8n_data:/home/node/.n8n
+    restart: unless-stopped
+
+volumes:
+  whatsapp_data:
+  n8n_data:
