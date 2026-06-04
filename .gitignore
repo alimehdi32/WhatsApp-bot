@@ -1,0 +1,14 @@
+# Environment secrets — NEVER commit
+.env
+
+# Node modules
+node_modules/
+whatsapp-api/node_modules/
+
+# WhatsApp session data (stays on server, not in repo)
+.wwebjs_auth/
+.wwebjs_cache/
+
+# OS
+.DS_Store
+Thumbs.db
